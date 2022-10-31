@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         setValue(for: redLabel, greenLabel, blueLabel)
     }
 
-    
+   // Изменение цветов слайдерами  Changing colors with sliders
     @IBAction func rgbSlider(_ sender: UISlider) {
         setColor()
         
@@ -46,6 +46,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // color View
     private func setColor() {
         colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value) / 255,
                                             green: CGFloat(greenSlider.value) / 255,
