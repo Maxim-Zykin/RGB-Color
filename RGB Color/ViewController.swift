@@ -30,6 +30,10 @@ class ViewController: UIViewController {
         greenSlider.value = 60
         blueSlider.value = 200
         
+        redSlider.tag = 0
+        greenSlider.tag = 1
+        blueSlider.tag = 2
+        
         setColor()
         setValue(for: redLabel, greenLabel, blueLabel)
     }
