@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ColorViewBackground {
+    func setColor(color: UIColor)
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var colorView: UIView!
@@ -18,6 +22,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var redSlider: UISlider!
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
+
+    @IBOutlet weak var doneButton: UIButton!
+    
+    var delegate: ColorViewBackground? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +44,12 @@ class ViewController: UIViewController {
         
         setColor()
         setValue(for: redLabel, greenLabel, blueLabel)
+        
+        doneButton.layer.cornerRadius = 10
     }
 
-   // Изменение цветов слайдерами  Changing colors with sliders
+    
+   // Changing colors with sliders
     @IBAction func rgbSlider(_ sender: UISlider) {
         setColor()
         
@@ -72,6 +83,12 @@ class ViewController: UIViewController {
     // Значения RGB
     private func string(from slider: UISlider) -> String {
         String(Int(slider.value))
+    }
+    
+    
+    @IBAction func doneButtonAction(_ sender: Any) {
+        delegate?.setColor(color: colorView.backgroundColor ?? .black)
+        dismiss(animated: true)
     }
 }
 
